@@ -18,4 +18,4 @@ PSUSphere is a student organization management system for Palawan State Universi
 
 ## Authors
 - Arjan Dave Abirin
-- My pair
+- Andrea Nicole Balot
