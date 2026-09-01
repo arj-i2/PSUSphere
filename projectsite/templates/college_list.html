@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
@@ -15,8 +14,7 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <div class="card-title">List of Organizations</div>
-                        <div class="card-category">Page Subtitle</div>
+                        <div class="card-title">List of Colleges</div>
                     </div>
 
                     <br />
@@ -24,10 +22,14 @@
                     <div class="col-md-12 row">
 
                         <div class="col-md-6">
-                            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'organization-list'%}">
+                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
                                 <div class="input-group">
 
-                                    <input type="text" placeholder="Search ..." class="form-control" name="q" />
+                                    <input
+                                        type="text"
+                                        placeholder="Search ..."
+                                        class="form-control"
+                                    />
 
                                     <div class="input-group-append">
                                         <span class="input-group-text">
@@ -42,10 +44,10 @@
                         <div class="col-md-6">
                             <div class="pull-right">
                                 <a
-                                    href="{% url 'organization-add' %}"
+                                    href="{% url 'college-add' %}"
                                     class="btn btn-success btn-rounded"
                                 >
-                                    Add Organization
+                                    Add College
                                 </a>
                             </div>
                         </div>
@@ -58,9 +60,7 @@
 
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">College</th>
-                                    <th scope="col">Description</th>
+                                    <th scope="col">College Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -70,19 +70,26 @@
                                 {% for object in object_list %}
 
                                 <tr>
-                                    <td>{{ object.name }}</td>
-                                    <td>{{ object.college }}</td>
-                                    <td>{{ object.description }}</td>
+                                    <td>{{ object.college_name }}</td>
+
                                     <td>
-                                        <a href="organization_list/{{ object.id }}">Edit</a>
-                                        <a href="organization_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                                        <a href="{% url 'college-update' object.pk %}">
+                                            Edit
+                                        </a>
+
+                                        <a
+                                            href="{% url 'college-delete' object.pk %}"
+                                            class="text-danger"
+                                        >
+                                            Delete
+                                        </a>
                                     </td>
                                 </tr>
 
                                 {% empty %}
 
                                 <tr>
-                                    <td colspan="4" style="text-align: center">
+                                    <td colspan="2" style="text-align: center">
                                         <p class="text-sm font-weight-bold mb-0">
                                             No Records Found
                                         </p>
@@ -108,4 +115,3 @@
 </div>
 
 {% endblock %}
-```
