@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import socket
 
-if "pythonanywhere" in socket.gethostname():
+if "liveconsole" in socket.gethostname():
     SITE_ID = 4  # production Site
 else:
     SITE_ID = 3  # local Site
