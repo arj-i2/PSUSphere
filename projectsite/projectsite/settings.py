@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
-import os
+import socket
+
+if "pythonanywhere" in socket.gethostname():
+    SITE_ID = 4  # production Site
+else:
+    SITE_ID = 3  # local Site
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-vi2$6fxlbpz=mk6m8in%*x#osru&1jx02xgz7@q6wka$dsy7n#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['arji2.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'arji2.pythonanywhere.com']
 
 
 # Application definition
@@ -49,7 +54,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
 ]
 
-SITE_ID = 2
+
 
 AUTHENTICATION_BACKENDS = [
 'django.contrib.auth.backends.ModelBackend',
